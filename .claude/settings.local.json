@@ -18,7 +18,8 @@
       "Bash(git push *)",
       "Bash(ollama list *)",
       "Bash(git commit *)",
-      "WebFetch(domain:brandfetch.com)"
+      "WebFetch(domain:brandfetch.com)",
+      "WebFetch(domain:commons.wikimedia.org)"
     ]
   }
 }
