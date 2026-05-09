@@ -32,12 +32,17 @@ def init_db():
             discovered_at TEXT,
             status TEXT DEFAULT 'pending',
             has_affiliate_program INTEGER DEFAULT 0,
+            rewardful_url TEXT,
             raw_data TEXT
         )
     """)
-    # Add column if it doesn't exist (for existing databases)
+    # Add columns if they don't exist (for existing databases)
     try:
         c.execute("ALTER TABLE discovered_tools ADD COLUMN has_affiliate_program INTEGER DEFAULT 0")
+    except:
+        pass
+    try:
+        c.execute("ALTER TABLE discovered_tools ADD COLUMN rewardful_url TEXT")
     except:
         pass
     conn.commit()
@@ -51,10 +56,15 @@ def is_already_scraped(conn, tool_name: str) -> bool:
     return c.fetchone() is not None
 
 
-def check_affiliate_program(tool_url: str) -> int:
-    """Check if tool's website has an affiliate/partners page."""
+def check_affiliate_program(tool_url: str) -> tuple:
+    """
+    Check if tool's website has an affiliate/partners page.
+    Returns (has_affiliate: int, rewardful_url: str)
+    """
+    rewardful_url = ""
+
     if not tool_url or not tool_url.startswith("http"):
-        return 0
+        return 0, ""
 
     try:
         headers = {
@@ -62,19 +72,20 @@ def check_affiliate_program(tool_url: str) -> int:
         }
         response = requests.get(tool_url, headers=headers, timeout=10, allow_redirects=True)
 
-        # Look for affiliate/partner indicators in footer
-        footer_text = ""
-
-        # Try to get footer section
         soup = BeautifulSoup(response.text, "html.parser")
-        footer = soup.find("footer")
-        if footer:
-            footer_text = footer.get_text().lower()
-        else:
-            # Fallback: search entire page
-            footer_text = soup.get_text().lower()
 
-        # Check for affiliate-related keywords
+        # 1. Check for Rewardful subdomain links (HIGH PRIORITY - free portal)
+        for a in soup.find_all("a", href=True):
+            href = a.get("href", "").lower()
+            if "getrewardful.com" in href:
+                rewardful_url = href
+                print(f"    [Rewardful] Found affiliate portal: {href}")
+                return 2, rewardful_url  # 2 = High Priority
+
+        # 2. Check footer for affiliate-related keywords
+        footer = soup.find("footer")
+        footer_text = footer.get_text().lower() if footer else soup.get_text().lower()
+
         affiliate_keywords = [
             "affiliate", "partners", "partner program", "referral program",
             "become a partner", "affiliate program", "partner portal"
@@ -83,12 +94,12 @@ def check_affiliate_program(tool_url: str) -> int:
         for keyword in affiliate_keywords:
             if keyword in footer_text:
                 print(f"    [Affiliate] Found '{keyword}' on {tool_url}")
-                return 1
+                return 1, ""
 
     except Exception as e:
         print(f"    [Affiliate Check] Error checking {tool_url}: {e}")
 
-    return 0
+    return 0, ""
 
 
 def insert_tool(conn, tool: Dict):
@@ -97,13 +108,13 @@ def insert_tool(conn, tool: Dict):
         return False
 
     # Check for affiliate program on tool's website
-    has_affiliate = check_affiliate_program(tool.get("url", ""))
+    has_affiliate, rewardful_url = check_affiliate_program(tool.get("url", ""))
 
     c = conn.cursor()
     c.execute("""
         INSERT INTO discovered_tools
-        (tool_name, source, source_url, description, category, discovered_at, has_affiliate_program, raw_data)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        (tool_name, source, source_url, description, category, discovered_at, has_affiliate_program, rewardful_url, raw_data)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         tool["name"],
         tool["source"],
@@ -112,6 +123,7 @@ def insert_tool(conn, tool: Dict):
         tool.get("category"),
         datetime.now(timezone.utc).isoformat(),
         has_affiliate,
+        rewardful_url,
         str(tool.get("raw", ""))
     ))
     conn.commit()
@@ -447,14 +459,14 @@ def discover_all_tools(limit_per_source: int = 15) -> List[Dict]:
 
 
 def get_pending_tools(limit: int = 10) -> List[Dict]:
-    """Get tools pending content generation."""
+    """Get tools pending content generation. Prioritizes Rewardful tools (has_affiliate_program=2)."""
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("""
-        SELECT tool_name, source, source_url, description, category, has_affiliate_program
+        SELECT tool_name, source, source_url, description, category, has_affiliate_program, rewardful_url
         FROM discovered_tools
         WHERE status = 'pending'
-        ORDER BY discovered_at DESC
+        ORDER BY has_affiliate_program DESC, discovered_at DESC
         LIMIT ?
     """, (limit,))
     rows = c.fetchall()
@@ -467,7 +479,8 @@ def get_pending_tools(limit: int = 10) -> List[Dict]:
             "url": row[2],
             "description": row[3],
             "category": row[4],
-            "has_affiliate": row[5]
+            "has_affiliate": row[5],
+            "rewardful_url": row[6] or ""
         }
         for row in rows
     ]

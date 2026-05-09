@@ -127,18 +127,23 @@ def load_my_links() -> dict:
     return {}
 
 
-def get_affiliate_link(tool_name: str, tool_url: str, has_affiliate: int = 0) -> tuple:
+def get_affiliate_link(tool_name: str, tool_url: str, has_affiliate: int = 0, rewardful_url: str = "") -> tuple:
     """
     Generate affiliate link for a tool.
-    Returns (url, source) tuple: source = 'my_links', 'affiliate_programs', or 'placeholder'
+    Returns (url, source) tuple: source = 'my_links', 'affiliate_programs', 'rewardful', or 'placeholder'
 
     Priority:
-    1. MY_LINKS.json (user's custom PartnerStack links)
-    2. AFFILIATE_PROGRAMS (built-in known programs)
-    3. Direct URL with placeholder tracking
+    1. Rewardful URL (HIGH PRIORITY - free portal, no registration needed)
+    2. MY_LINKS.json (user's custom PartnerStack links)
+    3. AFFILIATE_PROGRAMS (built-in known programs)
+    4. Direct URL with placeholder tracking
     """
     tool_lower = tool_name.lower()
     my_links = load_my_links()
+
+    # 0) HIGH PRIORITY: Rewardful portal (free, no registration)
+    if rewardful_url and rewardful_url.strip():
+        return (rewardful_url, "rewardful")
 
     # 1) Check MY_LINKS.json first
     for keyword, link_data in my_links.items():
@@ -639,6 +644,7 @@ def generate_article(tool: Dict) -> Optional[GeneratedArticle]:
     category = tool.get("category", "AI")
     tool_url = tool.get("url", "")
     has_affiliate = tool.get("has_affiliate", 0)
+    rewardful_url = tool.get("rewardful_url", "")
 
     # Step 1: Technical Analysis
     print(f"[Content Engine] Step 1: Technical analysis...")
@@ -654,7 +660,7 @@ def generate_article(tool: Dict) -> Optional[GeneratedArticle]:
     final_content = transform_to_personal_review(tool_name, technical_analysis, category)
 
     # Generate affiliate link (returns tuple: (url, source))
-    affiliate_link, link_source = get_affiliate_link(tool_name, tool_url, has_affiliate)
+    affiliate_link, link_source = get_affiliate_link(tool_name, tool_url, has_affiliate, rewardful_url)
     print(f"[Content Engine] Affiliate link source: {link_source}")
 
     # Get internal links for PBN
