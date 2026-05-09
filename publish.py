@@ -287,9 +287,11 @@ def publish_generated_articles() -> int:
         published.append({
             "name": tool_name,
             "slug": slug,
+            "url": f"/articles/{filename}",
             "category": category,
             "date": datetime.now().strftime("%Y-%m-%d"),
-            "source": src_path
+            "source": src_path,
+            "excerpt": ""
         })
 
         print(f"[Publish] {tool_name} → /articles/{filename}")
