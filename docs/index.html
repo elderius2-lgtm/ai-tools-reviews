@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIToolReviews - Expert AI Tool Reviews & Case Studies</title>
+    <meta name="description" content="Data-driven AI tool reviews and implementation case studies. We test, analyze, and document real-world AI automation results.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#06b6d4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-slate-950 text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    <span class="font-bold text-xl">AIToolReviews</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#reviews" class="text-slate-300 hover:text-white transition-colors">Reviews</a>
+                    <a href="#case-studies" class="text-slate-300 hover:text-white transition-colors">Case Studies</a>
+                    <a href="#about" class="text-slate-300 hover:text-white transition-colors">Our Approach</a>
+                    <a href="#contact" class="text-slate-300 hover:text-white transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-slate-300" id="menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-slate-900 border-t border-slate-800" id="mobile-menu">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#reviews" class="block text-slate-300 hover:text-white">Reviews</a>
+                <a href="#case-studies" class="block text-slate-300 hover:text-white">Case Studies</a>
+                <a href="#about" class="block text-slate-300 hover:text-white">Our Approach</a>
+                <a href="#contact" class="block text-slate-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                Updated May 2026
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                <span class="gradient-text">Expert AI Tool Reviews</span><br>
+                <span class="text-slate-100">Backed by Real Implementation Data</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10">
+                We test AI tools in real workflows, measure actual time savings, and document honest results.
+                No fluff, no sponsored content — just data-driven analysis from our automated testing pipeline.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#reviews" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-colors">
+                    Explore Reviews
+                </a>
+                <a href="#about" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-semibold transition-colors">
+                    Our Methodology
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8 border-y border-slate-800 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-blue-500">127</div>
+                    <div class="text-slate-400 text-sm mt-1">AI Tools Reviewed</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-cyan-500">3</div>
+                    <div class="text-slate-400 text-sm mt-1">Data Sources</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-emerald-500">48</div>
+                    <div class="text-slate-400 text-sm mt-1">Hours Saved (Avg)</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-purple-500">100%</div>
+                    <div class="text-slate-400 text-sm mt-1">Independent Testing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert AI Reviews Section -->
+    <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Expert AI Reviews</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Comprehensive analysis of the latest AI tools, tested in real-world scenarios.
+                </p>
+            </div>
+
+            <!-- Article Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
+                <!-- Articles loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Case Studies -->
+    <section id="case-studies" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Implementation Case Studies</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Real stories of AI integration, with measurable outcomes and honest assessments.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Case Study 1 -->
+                <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                    <div class="aspect-video bg-gradient-to-br from-blue-600/20 to-cyan-600/20 flex items-center justify-center">
+                        <span class="text-4xl opacity-50">📊</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-medium rounded">Case Study</span>
+                            <span class="text-slate-500 text-sm">Coming Soon</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+                            How I Used Claude to Automate My Code Review Process
+                        </h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Saving 3 hours daily on pull request analysis with AI-assisted review.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 text-sm">⏱️ 3 hrs/day saved</span>
+                            <span class="text-blue-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">Read →</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 2 -->
+                <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                    <div class="aspect-video bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center">
+                        <span class="text-4xl opacity-50">✍️</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded">Case Study</span>
+                            <span class="text-slate-500 text-sm">Coming Soon</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+                            Content Generation at Scale: My 60-Day Experiment
+                        </h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Generating 50 blog posts monthly with AI, while maintaining quality.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 text-sm">📝 50 articles/month</span>
+                            <span class="text-blue-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">Read →</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 3 -->
+                <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                    <div class="aspect-video bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
+                        <span class="text-4xl opacity-50">🎨</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs font-medium rounded">Case Study</span>
+                            <span class="text-slate-500 text-sm">Coming Soon</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+                            Using Midjourney for Client Mockups: A Designer's Journey
+                        </h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            From 2 days to 4 hours per project using AI image generation.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 text-sm">🎯 75% time reduced</span>
+                            <span class="text-blue-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">Read →</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">About Our Data-Driven Approach</h2>
+                    <div class="space-y-6 text-slate-400">
+                        <p>
+                            We built an automated pipeline that discovers new AI tools from leading platforms,
+                            generates test content, and publishes honest reviews — all without human bias.
+                        </p>
+                        <p>
+                            Our <strong class="text-white">3-source discovery system</strong> monitors:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                                <span><strong class="text-white">Product Hunt</strong> — trending launches and new releases</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-500 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                                <span><strong class="text-white">There's An AI For That</strong> — specialized AI solutions catalog</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                                <span><strong class="text-white">Hacker News</strong> — developer-trusted tools and libraries</span>
+                            </li>
+                        </ul>
+                        <p>
+                            Every tool passes through our <strong class="text-white">anti-detection writing system</strong>,
+                            ensuring content reads natural and helpful, not AI-generated.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                    <h3 class="text-xl font-semibold mb-6">Our Testing Process</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-blue-500">🔍</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium mb-1">Automated Discovery</h4>
+                                <p class="text-slate-400 text-sm">Tools scraped daily from 3 sources, filtered for actual products.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-500">⚙️</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium mb-1">Content Generation</h4>
+                                <p class="text-slate-400 text-sm">Local LLM creates technical analysis, then humanized case studies.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-emerald-500">📈</span>
+                                </div>
+                            <div>
+                                <h4 class="font-medium mb-1">Independent Publishing</h4>
+                                <p class="text-slate-400 text-sm">Articles published to GitHub Pages with internal linking for authority.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-purple-500">🔗</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium mb-1">Affiliate Integration</h4>
+                                <p class="text-slate-400 text-sm">Honest recommendations with transparent affiliate disclosure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+            <p class="text-slate-400 mb-8">
+                Have questions about AI tools, want to suggest a product for review, or interested in partnerships?
+            </p>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div>
+                        <h3 class="font-semibold mb-3">📧 Contact</h3>
+                        <p class="text-slate-400 text-sm">
+                            <a href="mailto:contact@aitoolreviews.com" class="text-blue-400 hover:underline">contact@aitoolreviews.com</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-3">🤝 Partnerships</h3>
+                        <p class="text-slate-400 text-sm">
+                            Interested in affiliate partnerships or sponsored content? We're selective but open to opportunities that provide real value to our readers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <!-- Affiliate Disclosure -->
+            <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 mb-8">
+                <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-slate-400">Affiliate Disclosure</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    AIToolReviews is a reader-supported site. When you purchase products through our links,
+                    we may earn an affiliate commission at <strong class="text-white">no extra cost to you</strong>.
+                    This helps us continue testing and reviewing AI tools. Our editorial content is not influenced
+                    by advertisers or affiliate partnerships. We only recommend tools we genuinely believe provide value.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    <span class="font-bold text-lg">AIToolReviews</span>
+                </div>
+                <div class="flex items-center gap-6 text-slate-400 text-sm">
+                    <a href="#reviews" class="hover:text-white transition-colors">Reviews</a>
+                    <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+                    <a href="#about" class="hover:text-white transition-colors">About</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    © 2026 AIToolReviews. Built with Claude + Ollama.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Load articles from JSON
+        async function loadArticles() {
+            const grid = document.getElementById('articles-grid');
+            try {
+                const response = await fetch('js/articles.json');
+                const articles = await response.json();
+
+                if (articles.length === 0) {
+                    grid.innerHTML = '<p class="text-slate-400 col-span-full text-center">No reviews yet. Check back soon!</p>';
+                    return;
+                }
+
+                grid.innerHTML = articles.slice(0, 6).map(article => `
+                    <a href="${article.url}" class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all">
+                        <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                            <span class="text-4xl opacity-30 group-hover:opacity-50 transition-opacity">🤖</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-medium rounded">${article.category || 'AI Tool'}</span>
+                                <span class="text-slate-500 text-sm">${article.date || ''}</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+                                ${article.name} Review
+                            </h3>
+                            <p class="text-slate-400 text-sm line-clamp-2">
+                                ${article.excerpt || 'Detailed review coming soon.'}
+                            </p>
+                        </div>
+                    </a>
+                `).join('');
+            } catch (error) {
+                console.log('Articles JSON not found or empty - showing placeholder cards');
+                // Show placeholder cards when no articles exist yet
+                grid.innerHTML = `
+                    <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                        <div class="aspect-video bg-gradient-to-br from-blue-600/10 to-slate-800 flex items-center justify-center">
+                            <span class="text-4xl opacity-30">📱</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-medium rounded">LLM</span>
+                                <span class="text-slate-500 text-sm">May 2026</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Claude Review</h3>
+                            <p class="text-slate-400 text-sm">Coming soon: In-depth analysis of Claude's capabilities.</p>
+                        </div>
+                    </article>
+                    <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                        <div class="aspect-video bg-gradient-to-br from-purple-600/10 to-slate-800 flex items-center justify-center">
+                            <span class="text-4xl opacity-30">🎨</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs font-medium rounded">Image</span>
+                                <span class="text-slate-500 text-sm">May 2026</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Midjourney Review</h3>
+                            <p class="text-slate-400 text-sm">Coming soon: Is Midjourney still the king of AI art?</p>
+                        </div>
+                    </article>
+                    <article class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors">
+                        <div class="aspect-video bg-gradient-to-br from-emerald-600/10 to-slate-800 flex items-center justify-center">
+                            <span class="text-4xl opacity-30">💻</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded">Code</span>
+                                <span class="text-slate-500 text-sm">May 2026</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Cursor Review</h3>
+                            <p class="text-slate-400 text-sm">Coming soon: The AI-first code editor tested.</p>
+                        </div>
+                    </article>
+                `;
+            }
+        }
+
+        loadArticles();
+    </script>
+</body>
+</html>

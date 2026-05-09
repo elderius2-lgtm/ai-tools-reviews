@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(Get-ChildItem \"D:\\\\PROJECTS\" -Force)",
+      "Bash(Format-Table Name, Mode, LastWriteTime)",
+      "Bash(powershell *)",
+      "Bash(cmd *)",
+      "Bash(python3 -m py_compile D:/PROJECTS/scrapper.py)",
+      "Bash(python3 -m py_compile D:/PROJECTS/content_engine.py)",
+      "Bash(pip install *)",
+      "Bash(python scrapper.py)",
+      "Bash(python -c \"from scrapper import get_pending_tools; tools = get_pending_tools\\(3\\); print\\('Pending tools:', [t['name'] for t in tools]\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(Test-Path *)"
+    ]
+  }
+}

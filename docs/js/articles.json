@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Example Tool",
+    "url": "/articles/example-tool.html",
+    "category": "LLM",
+    "date": "2026-05-08",
+    "excerpt": "This is a placeholder article. Run scrapper.py and publish.py to generate real content."
+  }
+]

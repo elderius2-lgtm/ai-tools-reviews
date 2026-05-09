@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TOOL_NAME}} Review | AIToolReviews</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{AFFILIATE_LINK}}">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .article-hero {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .article-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+        }
+        .article-content h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        .article-content p {
+            margin: 1rem 0;
+        }
+        .article-content ul, .article-content ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .article-content li {
+            margin: 0.5rem 0;
+        }
+        .article-content strong {
+            color: var(--primary-dark);
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #1f2937;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+        .related-tools {
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        .related-tools h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        .related-tools ul {
+            list-style: none;
+        }
+        .related-tools a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .related-tools a:hover {
+            text-decoration: underline;
+        }
+        .affiliate-disclosure {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">AIToolReviews</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">All Reviews</a>
+                    <a href="/#categories">Categories</a>
+                    <a href="/#about">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="article-hero">
+            <div class="container">
+                <span class="category-tag">{{CATEGORY}}</span>
+                <h1 style="margin-top: 1rem; font-size: 2rem;">{{TOOL_NAME}}</h1>
+            </div>
+        </div>
+
+        <div class="article-container">
+            <div style="text-align: center;">
+                <a href="{{AFFILIATE_LINK}}" class="cta-button" target="_blank" rel="nofollow sponsored">
+                    Try {{TOOL_NAME}} →
+                </a>
+            </div>
+
+            <article class="article-content">
+                {{ARTICLE_CONTENT}}
+            </article>
+
+            {{INTERNAL_LINKS}}
+
+            <p class="affiliate-disclosure">
+                * Disclosure: This article contains affiliate links. If you purchase through links above,
+                I may earn a commission at no extra cost to you. This supports my ongoing testing and reviews.
+            </p>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/" style="color: var(--primary); font-weight: 600;">← Back to All Reviews</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AIToolReviews | Built with Claude + Ollama</p>
+        </div>
+    </footer>
+</body>
+</html>

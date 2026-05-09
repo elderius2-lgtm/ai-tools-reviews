@@ -1,0 +1,57 @@
+{
+  "_comment": "Your affiliate links from PartnerStack and other programs. Format: 'tool-name-lower': {'url': 'your-affiliate-url', 'program': 'program-name', 'commission': 'rate'}",
+  "_instructions": "Add your affiliate links here. content_engine.py will check this file first. If a tool is not found, it falls back to AFFILIATE_PROGRAMS or placeholder.",
+  "_example": {
+    "chatgpt": {
+      "url": "https://chat.openai.com/?ref=YOUR_ID",
+      "program": "OpenAI Partner",
+      "commission": "20% recurrent"
+    }
+  },
+
+  "chatgpt": {
+    "url": "",
+    "program": "OpenAI Partner",
+    "commission": "20% recurrent"
+  },
+  "claude": {
+    "url": "",
+    "program": "Anthropic Partner",
+    "commission": "20% recurrent"
+  },
+  "midjourney": {
+    "url": "",
+    "program": "Midjourney Affiliate",
+    "commission": "10-15%"
+  },
+  "jasper": {
+    "url": "",
+    "program": "Jasper Partner",
+    "commission": "30% first year"
+  },
+  "github copilot": {
+    "url": "",
+    "program": "GitHub Partner",
+    "commission": "$5-10/first year"
+  },
+  "cursor": {
+    "url": "",
+    "program": "Cursor Partner",
+    "commission": "contact for rate"
+  },
+  "notion": {
+    "url": "",
+    "program": "Notion Affiliate",
+    "commission": "50% first year"
+  },
+  "canva": {
+    "url": "",
+    "program": "Canva Partner",
+    "commission": "contact for rate"
+  },
+
+  "_placeholder": {
+    "comment": "If a tool has no affiliate link, use this placeholder URL",
+    "template": "https:// EXAMPLE: replace with your tracking link or use direct URL"
+  }
+}

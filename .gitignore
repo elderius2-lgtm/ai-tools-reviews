@@ -1,0 +1,27 @@
+# Dependencies
+__pycache__/
+*.pyc
+data/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.github/workflows/*.yml
+
+# Python
+.pytest_cache/
+*.egg-info/
+
+# Ollama (if running locally)
+ollama_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output (keep articles)
+output/articles/raw/
+output/articles/final/*.html
