@@ -17,7 +17,8 @@
       "Bash(git commit -m 'Add Rewardful affiliate detection \\(high priority\\) *)",
       "Bash(git push *)",
       "Bash(ollama list *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "WebFetch(domain:brandfetch.com)"
     ]
   }
 }
