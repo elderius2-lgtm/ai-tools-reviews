@@ -17,6 +17,14 @@ from dataclasses import dataclass
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3")
 
+# OpenRouter configuration (for paid GPT-4o generation)
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
+OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o")
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+# Use OpenRouter if API key is set, otherwise fall back to Ollama
+USE_OPENROUTER = bool(OPENROUTER_API_KEY)
+
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "tools.db")
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "output", "articles")
 
@@ -41,15 +49,19 @@ def init_output_dir():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 
-# ============ OLLAMA API CLIENT ============
+# ============ LLM GENERATION (Ollama or OpenRouter) ============
 
-def ollama_generate(prompt: str, model: str = None, timeout: int = 120) -> str:
-    """Generate text using Ollama local LLM."""
+def generate_with_llm(prompt: str, model: str = None, timeout: int = 120) -> str:
+    """Generate text using OpenRouter (优先) or Ollama."""
     import urllib.request
     import urllib.error
 
-    model = model or OLLAMA_MODEL
+    # Use OpenRouter if API key is configured
+    if USE_OPENROUTER:
+        return openrouter_generate(prompt, timeout=timeout)
 
+    # Fall back to Ollama
+    model = model or OLLAMA_MODEL
     payload = {
         "model": model,
         "prompt": prompt,
@@ -78,10 +90,61 @@ def ollama_generate(prompt: str, model: str = None, timeout: int = 120) -> str:
         return ""
 
 
-def check_ollama_status() -> bool:
-    """Check if Ollama is running and accessible."""
+def openrouter_generate(prompt: str, timeout: int = 120) -> str:
+    """Generate text using OpenRouter API (GPT-4o, Claude, etc.)."""
+    import urllib.request
+    import urllib.error
+
+    payload = {
+        "model": OPENROUTER_MODEL,
+        "messages": [
+            {"role": "user", "content": prompt}
+        ],
+        "max_tokens": 2048,
+        "temperature": 0.7
+    }
+
+    try:
+        req = urllib.request.Request(
+            OPENROUTER_URL,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "HTTP-Referer": "https://aitoolreviews.com",
+                "X-Title": "AIToolReviews"
+            },
+            method="POST"
+        )
+
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            result = json.loads(response.read().decode("utf-8"))
+            if "choices" in result and len(result["choices"]) > 0:
+                return result["choices"][0]["message"]["content"].strip()
+            return ""
+
+    except Exception as e:
+        print(f"[OpenRouter] Error generating: {e}")
+        return ""
+
+
+def check_llm_status() -> bool:
+    """Check if LLM service is running and accessible."""
     import urllib.request
 
+    if USE_OPENROUTER:
+        # Simple connectivity check for OpenRouter
+        try:
+            req = urllib.request.Request(
+                "https://openrouter.ai/api/v1/models",
+                headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}"}
+            )
+            with urllib.request.urlopen(req, timeout=5) as response:
+                return response.status == 200
+        except:
+            return False
+
+    # Check Ollama
     try:
         req = urllib.request.Request(
             f"{OLLAMA_URL}/api/tags",
@@ -193,7 +256,7 @@ Provide a structured technical analysis covering:
 Keep it factual and technical. No marketing fluff. 200-300 words.
 """
 
-    analysis = ollama_generate(prompt)
+    analysis = generate_with_llm(prompt)
 
     # Fallback if Ollama fails
     if not analysis:
@@ -252,7 +315,7 @@ TONE: First person, conversational, like a friend sharing a discovery.
 700-900 words. No marketing fluff.
 """
 
-    review = ollama_generate(prompt, timeout=180)
+    review = generate_with_llm(prompt, timeout=180)
 
     if not review:
         hours = ["3 hours", "5 hours", "2 hours"][hashlib.md5(tool_name.encode()).hexdigest()[0] % 3]
@@ -728,7 +791,7 @@ if __name__ == "__main__":
     print("=" * 50)
 
     # Check Ollama status
-    if check_ollama_status():
+    if check_llm_status():
         print("[OK] Ollama is running")
     else:
         print("[WARNING] Ollama is not accessible. Using fallback content.")

@@ -14,7 +14,10 @@
       "Bash(python -c ' *)",
       "Bash(Test-Path *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Add Rewardful affiliate detection \\(high priority\\) *)"
+      "Bash(git commit -m 'Add Rewardful affiliate detection \\(high priority\\) *)",
+      "Bash(git push *)",
+      "Bash(ollama list *)",
+      "Bash(git commit *)"
     ]
   }
 }
