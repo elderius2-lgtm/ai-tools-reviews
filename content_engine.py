@@ -9,6 +9,7 @@ import sqlite3
 import os
 import json
 import time
+import hashlib
 from datetime import datetime
 from typing import Dict, Optional, Tuple
 from dataclasses import dataclass

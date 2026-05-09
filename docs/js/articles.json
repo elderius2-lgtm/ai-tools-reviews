@@ -1,5 +1,75 @@
 [
   {
+    "name": "Zappy By Zapdigits",
+    "slug": "zappy-by-zapdigits",
+    "category": "Zappy by ZapDigits",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\zappy-by-zapdigits.html"
+  },
+  {
+    "name": "Prism",
+    "slug": "prism",
+    "category": "Prism",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\prism.html"
+  },
+  {
+    "name": "Pop",
+    "slug": "pop",
+    "category": "Pop",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\pop.html"
+  },
+  {
+    "name": "Omi A11Y",
+    "slug": "omi-a11y",
+    "category": "Omi A11Y",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\omi-a11y.html"
+  },
+  {
+    "name": "Nocal 4",
+    "slug": "nocal-4",
+    "category": "nocal 4",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\nocal-4.html"
+  },
+  {
+    "name": "Molmoact 2",
+    "slug": "molmoact-2",
+    "category": "MolmoAct 2",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\molmoact-2.html"
+  },
+  {
+    "name": "Manuscripts.App",
+    "slug": "manuscripts.app",
+    "category": "Manuscripts.app",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\manuscripts.app.html"
+  },
+  {
+    "name": "Codex In Chrome",
+    "slug": "codex-in-chrome",
+    "category": "Codex in Chrome",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\codex-in-chrome.html"
+  },
+  {
+    "name": "Clawtick",
+    "slug": "clawtick",
+    "category": "ClawTick",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\clawtick.html"
+  },
+  {
+    "name": "Claude For Desktop",
+    "slug": "claude-for-desktop",
+    "category": "Claude for Desktop",
+    "date": "2026-05-09",
+    "source": "D:\\PROJECTS\\output\\articles\\final\\claude-for-desktop.html"
+  },
+  {
     "name": "Example Tool",
     "url": "/articles/example-tool.html",
     "category": "LLM",
